@@ -134,7 +134,7 @@ public class OAuthManagerProviders {
     final String access_token,
     @Nullable final ReadableMap params
   ) {
-    if (params != null && params.hasKey("params")) {
+    if (params != null) {
       ReadableMapKeySetIterator iterator = params.keySetIterator();
       while (iterator.hasNextKey()) {
         String key = iterator.nextKey();
@@ -273,14 +273,14 @@ public class OAuthManagerProviders {
     if (opts != null && opts.hasKey("scopes")) {
       scopes = (String) opts.getString("scopes");
       String scopeStr = null;
-      
+
       if (!rawScopes)
         scopeStr = OAuthManagerProviders.getScopeString(scopes, ",");
       else
         scopeStr = scopes;
-        
+
       builder.scope(scopeStr);
-    } 
+    }
 
     if (callbackUrl != null) {
       builder.callback(callbackUrl);
